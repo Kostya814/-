@@ -10,6 +10,6 @@ namespace Патерн
     {
         void AddObserver(User us);
         void RemoveObserver(User us);
-        void NotifyObservers(string name);
+        void NotifyObservers(Celebration name);
     }
 }

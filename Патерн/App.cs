@@ -13,16 +13,23 @@ namespace Патерн
         DateTime time;
         public App() 
         {
-            users = new List<User>();
+            users = new List<User>()
+            {
+            new User("Коcтя", Root.VIP),
+            new User("Дима", Root.Amateur),
+            new User("Витя", Root.Rookie)
+            };
             celebrations = new List<Celebration>()
             { 
-                new Celebration(new DateTime(2023,3,8), "Международный День Женщин"),
-                new Celebration (new DateTime(2023,5,9),"День Победы")
+                new Celebration(new DateTime(2023,3,8), "Международный День Женщин",Root.VIP),
+                new Celebration (new DateTime(2023,5,9),"День Победы", Root.VIP),
+                new Celebration (new DateTime(2023,5,9),"День Победы", Root.Amateur),
+                new Celebration (new DateTime(2023,5,9),"День Победы", Root.Amateur)
             };
-            time = Convert.ToDateTime(Console.ReadLine());
+            time = new DateTime(2023, Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()));
             foreach (var item in celebrations)
             {
-                if (item.Check(time)) NotifyObservers(item.Name);
+                if (item.Check(time)) NotifyObservers(item);
             }          
             
         }
@@ -31,7 +38,7 @@ namespace Патерн
             users.Add(us);   
         }
 
-        public void NotifyObservers(string name)
+        public void NotifyObservers(Celebration name)
         {
             foreach (var user in users)
             {

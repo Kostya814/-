@@ -1,12 +1,9 @@
 ﻿namespace Патерн
 {
-    class Root
+    enum Root
     {
-        public string _name;
-
-        public Root(string name) 
-        {
-            _name = name; 
-        }
+        VIP,
+        Rookie,
+        Amateur
     }
 }

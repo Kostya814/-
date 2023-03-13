@@ -8,16 +8,17 @@ namespace Патерн
 {
     class User
     {
-        private string _namme;
+        private string _name;
         private Root _root;
         public User(string name, Root root)
         {
-            _namme = name;
+            _name = name;
             _root = root;
         }
-        public void Notify(string name)
+        public void Notify(Celebration holi)
         {
-            Console.WriteLine(name);
+            if (holi.Root >= this._root) Console.WriteLine(this._name + " - " + holi.Name);
+            else Console.WriteLine(this._name + " Купи VIP");
         }
     }
 }
