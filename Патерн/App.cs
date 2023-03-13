@@ -26,16 +26,23 @@ namespace Патерн
                 new Celebration (new DateTime(2023,5,9),"День Победы", Root.Amateur),
                 new Celebration (new DateTime(2023,5,9),"День Победы", Root.Amateur)
             };
+            Check();
+
+
+
+        }
+        public void AddObserver(User us)
+        {
+            users.Add(us);
+            Check();
+        }
+        private void Check()
+        {
             time = new DateTime(2023, Convert.ToInt32(Console.ReadLine()), Convert.ToInt32(Console.ReadLine()));
             foreach (var item in celebrations)
             {
                 if (item.Check(time)) NotifyObservers(item);
-            }          
-            
-        }
-        public void AddObserver(User us)
-        {
-            users.Add(us);   
+            }
         }
 
         public void NotifyObservers(Celebration name)
@@ -50,6 +57,7 @@ namespace Патерн
         public void RemoveObserver(User us)
         {
             users.Remove(us);
+            Check();
         }
     }
 }
